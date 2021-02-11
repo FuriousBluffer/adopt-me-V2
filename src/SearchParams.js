@@ -9,11 +9,11 @@ const SearchParams = () => {
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
 
   useEffect(() => {
+    console.log("--------------------------------");
     setBreeds([]);
     setBreed("");
-
-    pet.breeds(animal).then(({ breeds }) => {
-      const breedStrings = breeds.map(({ name }) => name);
+    pet.breeds(animal).then(({ breeds: apiBreeds }) => {
+      const breedStrings = apiBreeds.map(({ name }) => name);
       setBreeds(breedStrings);
     }, console.error);
   }, [animal, setBreed, setBreeds]);
